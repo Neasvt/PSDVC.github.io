@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>心理测试量表</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  form { width: 300px; margin: 0 auto; }
+  .question { margin-bottom: 10px; }
+  #scoreResult { margin-top: 20px; font-weight: bold; }
+  .recommendation { color: red; }
+</style>
+</head>
+<body>
+
+<h2>心理测试量表</h2>
+
+<form id="psychTestForm" method="post" action="process_scores.php">
+  <!-- 问题1 -->
+  <div class="question">
+    <label>问题1: 你经常感到快乐吗？</label><br>
+    <input type="radio" name="q1" value="1" data-factor="A"> 从不<br>
+    <input type="radio" name="q1" value="2" data-factor="A"> 偶尔<br>
+    <input type="radio" name="q1" value="3" data-factor="A"> 经常<br>
+    <input type="radio" name="q1" value="4" data-factor="A"> 总是<br>
+  </div>
+
+  <!-- 添加更多问题 -->
+
+  <div>
+    <button type="submit">提交并计算分数</button>
+  </div>
+</form>
+
+<div id="scoreResult"></div>
+
+<script>
+  document.getElementById('psychTestForm').onsubmit = function() {
+    var radios = document.querySelectorAll('input[type="radio"]:checked');
+    if (radios.length < document.querySelectorAll('.question').length) {
+      alert('请回答所有问题后再提交！');
+      return false;
+    }
+    return true;
+  };
+</script>
+
+</body>
+</html>
